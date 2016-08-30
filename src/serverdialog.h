@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::ServerDialog *ui;
+    bool accepted; /// not deleting when exit
 };
 
 #endif // SERVERDIALOG_H

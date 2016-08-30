@@ -1,3 +1,4 @@
+#include <QDebug>
 #include <QMessageBox>
 #include "data.h"
 #include "remoteinput.h"
@@ -6,7 +7,8 @@
 
 ServerDialog::ServerDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ServerDialog)
+    ui(new Ui::ServerDialog),
+    accepted(false)
 {
     ui->setupUi(this);
     ui->listeningLabel->hide();
@@ -18,6 +20,11 @@ ServerDialog::ServerDialog(QWidget *parent) :
 
 ServerDialog::~ServerDialog()
 {
+    if (! accepted)
+    {
+        qDebug() << " -- Server dialog closed";
+        emit Data::getInst()->remote->reset();
+    }
     delete ui;
 }
 
@@ -44,6 +51,7 @@ void ServerDialog::on_setupButton_clicked(bool)
 void ServerDialog::on_listWidget_itemActivated(QListWidgetItem *item)
 {
     emit Data::getInst()->remote->acceptClient(ui->listWidget->row(item));
+    accepted = true;
     deleteLater();
 }
 

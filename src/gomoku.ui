@@ -56,7 +56,7 @@
         <item>
          <widget class="QPushButton" name="clientButton">
           <property name="text">
-           <string>Connect Server</string>
+           <string>Connect to Server</string>
           </property>
          </widget>
         </item>
@@ -86,7 +86,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

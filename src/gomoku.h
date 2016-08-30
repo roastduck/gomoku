@@ -18,6 +18,7 @@ public:
 
 private slots:
     void promptConnectError();
+    void connected();
 
     void on_serverButton_clicked(bool checked);
     void on_clientButton_clicked(bool checked);

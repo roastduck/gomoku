@@ -2,6 +2,7 @@
 #include <QTcpSocket>
 #include <QByteArray>
 #include <QHostAddress>
+#include <QJsonParseError>
 #include "const.h"
 #include "remoteinput.h"
 
@@ -16,7 +17,7 @@ RemoteInput::~RemoteInput()
 
 void RemoteInput::setupServer(const QString &addr)
 {
-    Q_ASSERT(! server);
+    reset();
     server = new QTcpServer(this);
     connect(server, SIGNAL(newConnection()), this, SLOT(newClient()));
 
@@ -36,7 +37,7 @@ void RemoteInput::acceptClient(int index)
     socket = pendingSockets[index];
     pendingSockets.clear();
     setupSocket();
-    send("Hello");
+    send("hello");
 }
 
 void RemoteInput::reset()
@@ -62,6 +63,7 @@ void RemoteInput::reset()
 
 void RemoteInput::connectToServer(const QString &addr)
 {
+    reset();
     socket = new QTcpSocket(this);
     socket->connectToHost(QHostAddress(addr), PORT);;
     setupSocket();
@@ -73,7 +75,7 @@ void RemoteInput::newClient()
     {
         QTcpSocket *connection = server->nextPendingConnection();
         pendingSockets.push_back(connection);
-        connect(connection, SIGNAL(disconnected()), closeMapper, SLOT(map(QObject*)));
+        connect(connection, SIGNAL(disconnected()), closeMapper, SLOT(map()));
         closeMapper->setMapping(connection, connection);
         connect(closeMapper, SIGNAL(mapped(QObject*)), this, SLOT(clientClosed(QObject*)));
     }
@@ -82,10 +84,12 @@ void RemoteInput::newClient()
 
 // Since we are in the same thread with ui, there is no need to worry that something
 // is triggered in ui when updating socket list.
-void RemoteInput::clientClosed(QObject *socket)
+void RemoteInput::clientClosed(QObject *_socket)
 {
+    if (_socket == socket) // accepted
+        return;
     for (int i = 0; i < pendingSockets.size(); i++)
-        if (pendingSockets[i] == socket)
+        if (pendingSockets[i] == _socket)
         {
             pendingSockets.removeAt(i);
             break;
@@ -97,6 +101,39 @@ void RemoteInput::onData()
 {
     QByteArray arr = socket->readAll();
     qDebug() << "received " + arr;
+    dataReceived += arr;
+    QJsonParseError error;
+    QJsonDocument json = QJsonDocument::fromJson(dataReceived, &error);
+    QJsonObject obj;
+    switch (error.error)
+    {
+    case QJsonParseError::GarbageAtEnd:
+        obj = QJsonDocument::fromJson(dataReceived.left(error.offset)).object();
+        dataReceived = dataReceived.right(dataReceived.length() - error.offset);
+        break;
+    case QJsonParseError::NoError:
+        obj = json.object();
+        dataReceived.clear();
+        break;
+    default:
+        break;
+    }
+    if (obj != QJsonObject())
+    {
+        QString method = obj["method"].toString();
+        QJsonObject params = obj["params"].toObject();
+        qDebug() << "method " << method;
+        qDebug() << "params " << params;
+        if (method == "hello")
+        {
+            emit hello();
+            send("helloAck");
+        } else if (method == "helloAck")
+        {
+            emit hello();
+        } else
+            Q_ASSERT(false);
+    }
 }
 
 void RemoteInput::setupSocket()

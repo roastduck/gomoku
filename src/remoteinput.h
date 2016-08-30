@@ -3,6 +3,7 @@
 
 #include <QList>
 #include <QPointer>
+#include <QByteArray>
 #include <QTcpSocket>
 #include <QTcpServer>
 #include <QJsonValue>
@@ -29,6 +30,8 @@ signals:
     void serverError();
     /// emitted when connection fails
     void connectError();
+    /// emitted when connection accepted by both side
+    void hello();
 
 public slots:
     /// setup a server listening to `addr`
@@ -42,7 +45,7 @@ public slots:
 
 private slots:
     void newClient();
-    void clientClosed(QObject *socket);
+    void clientClosed(QObject *_socket);
     /// When data blocks received
     void onData();
 
@@ -63,7 +66,7 @@ private:
     /// transfer disconnection signal
     QSignalMapper *closeMapper;
 
-    QString dataReceived;
+    QByteArray dataReceived;
 };
 
 #endif // REMOTEINPUT_H
