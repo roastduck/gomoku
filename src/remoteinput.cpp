@@ -3,6 +3,7 @@
 #include <QByteArray>
 #include <QHostAddress>
 #include <QJsonParseError>
+#include "data.h"
 #include "const.h"
 #include "remoteinput.h"
 
@@ -100,7 +101,7 @@ void RemoteInput::clientClosed(QObject *_socket)
 void RemoteInput::onData()
 {
     QByteArray arr = socket->readAll();
-    qDebug() << "received " + arr;
+    qDebug() << "received " << arr;
     dataReceived += arr;
     QJsonParseError error;
     QJsonDocument json = QJsonDocument::fromJson(dataReceived, &error);
@@ -131,6 +132,15 @@ void RemoteInput::onData()
         } else if (method == "helloAck")
         {
             emit hello();
+        } else if (method == "ready")
+        {
+            Data::getInst()->setRemoteReady();
+        } else if (method == "startGame")
+        {
+            Data::getInst()->startGame(params["color"].toBool());
+        } else if (method == "draw")
+        {
+            emit draw(params["row"].toInt(), params["column"].toInt());
         } else
             Q_ASSERT(false);
     }

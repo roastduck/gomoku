@@ -33,49 +33,84 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>151</width>
-         <height>131</height>
-        </rect>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="rightMargin">
+        <number>0</number>
        </property>
-       <property name="title">
-        <string>Connection</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QPushButton" name="serverButton">
-          <property name="text">
-           <string>Setup as Server</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="clientButton">
-          <property name="text">
-           <string>Connect to Server</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="disconnectButton">
-          <property name="text">
-           <string>Disconnect</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="statusLabel">
-          <property name="text">
-           <string>Not connected</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Connection</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="serverButton">
+            <property name="text">
+             <string>Setup as Server</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="clientButton">
+            <property name="text">
+             <string>Connect to Server</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="disconnectButton">
+            <property name="text">
+             <string>Disconnect</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="statusLabel">
+            <property name="text">
+             <string>Not connected</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Game</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QPushButton" name="readyButton">
+            <property name="text">
+             <string>Ready</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="restartButton">
+            <property name="text">
+             <string>Restart</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>

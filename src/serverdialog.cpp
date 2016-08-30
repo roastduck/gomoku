@@ -1,5 +1,7 @@
 #include <QDebug>
 #include <QMessageBox>
+#include <QHostAddress>
+#include <QNetworkInterface>
 #include "data.h"
 #include "remoteinput.h"
 #include "serverdialog.h"
@@ -16,6 +18,13 @@ ServerDialog::ServerDialog(QWidget *parent) :
 
     connect(Data::getInst()->remote, SIGNAL(serverError()), this, SLOT(promptServerError()));
     connect(Data::getInst()->remote, SIGNAL(newClientList(const QList<QString> &)), this, SLOT(newClientList(const QList<QString> &)));
+
+    foreach (const QHostAddress &address, QNetworkInterface::allAddresses())
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost))
+        {
+             ui->ipInput->setText(address.toString());
+             break;
+        }
 }
 
 ServerDialog::~ServerDialog()

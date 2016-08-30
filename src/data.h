@@ -15,13 +15,39 @@ public:
     /// Get singleton instance
     static Data *getInst();
 
+    /// set as ready to play
+    void setLocalReady();
+    void setRemoteReady();
+
+    /// set local color and start game
+    void startGame(bool color);
+
+    /// clear board and reset color
+    void reset();
+
+    /// input draw from user
+    void drawInput(int row, int column);
+
     /// local player
     Input *local;
     /// remote player
     RemoteInput *remote;
 
+private slots:
+    void drawOutputBlack(int row, int column) { drawOutput(row, column, 0); }
+    void drawOutputWhite(int row, int column) { drawOutput(row, column, 1); }
+
 private:
     explicit Data(QObject *parent = 0);
+
+    /// decide color and tell remote side
+    void decideColor();
+
+    /// output draw to board
+    void drawOutput(int row, int column, bool color);
+
+    bool localReady, remoteReady;
+    bool localColor, currentColor;
 
     static Data *instance;
 };

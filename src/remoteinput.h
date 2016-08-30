@@ -20,6 +20,11 @@ public:
     explicit RemoteInput(QObject *parent);
     ~RemoteInput();
 
+    bool isServer() { return server; }
+
+    /// Call remote method in JSON format
+    void send(const QString &method, const QJsonObject &params = QJsonObject());
+
 signals:
     /**
      * @brief emitted when client list changed
@@ -53,9 +58,6 @@ private:
     void setupSocket();
 
     void newClientListEmitter();
-
-    /// Call remote method in JSON format
-    void send(const QString &method, const QJsonObject &params = QJsonObject());
 
     QPointer<QTcpServer> server;
     QList< QPointer<QTcpSocket> > pendingSockets;

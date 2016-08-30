@@ -19,10 +19,14 @@ public:
 private slots:
     void promptConnectError();
     void connected();
+    /// clear board and reset color
+    void restart();
 
     void on_serverButton_clicked(bool checked);
     void on_clientButton_clicked(bool checked);
     void on_disconnectButton_clicked(bool checked);
+
+    void on_readyButton_clicked(bool checked);
 
 private:
     Ui::Gomoku *ui;

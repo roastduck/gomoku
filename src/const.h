@@ -1,7 +1,13 @@
 #ifndef CONST_H
 #define CONST_H
 
+#include <QPair>
+#include <QString>
+#include <QJsonValue>
+
 /// TCP port
-int PORT = 8388;
+const int PORT = 8388;
+
+typedef QPair<QString, QJsonValue> JsonKeyValue;
 
 #endif // CONST_H

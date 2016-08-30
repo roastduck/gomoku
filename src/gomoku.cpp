@@ -16,6 +16,8 @@ Gomoku::Gomoku(QWidget *parent) :
 
     connect(Data::getInst()->remote, SIGNAL(connectError()), this, SLOT(promptConnectError()));
     connect(Data::getInst()->remote, SIGNAL(hello()), this, SLOT(connected()));
+
+    connect(ui->restartButton, SIGNAL(clicked(bool)), this, SLOT(restart()));
 }
 
 Gomoku::~Gomoku()
@@ -37,6 +39,13 @@ void Gomoku::connected()
     ui->clientButton->setDisabled(true);
     ui->serverButton->setDisabled(true);
     ui->statusLabel->setText(tr("Connected"));
+    restart();
+}
+
+void Gomoku::restart()
+{
+    ui->readyButton->setDisabled(false);
+    Data::getInst()->reset();
 }
 
 void Gomoku::on_serverButton_clicked(bool)
@@ -57,4 +66,10 @@ void Gomoku::on_clientButton_clicked(bool)
 void Gomoku::on_disconnectButton_clicked(bool)
 {
     emit Data::getInst()->remote->reset();
+}
+
+void Gomoku::on_readyButton_clicked(bool)
+{
+    Data::getInst()->setLocalReady();
+    ui->readyButton->setDisabled(true);
 }
