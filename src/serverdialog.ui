@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>408</width>
     <height>300</height>
    </rect>
   </property>
@@ -45,7 +45,11 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QListWidget" name="listWidget"/>
+       <widget class="QListWidget" name="listWidget">
+        <property name="toolTip">
+         <string>Double-click to accept a connection</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -65,6 +69,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="listeningLabel">
+        <property name="text">
+         <string>Linstening for incoming connection</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="setupButton">

@@ -39,6 +39,7 @@ void Gomoku::on_clientButton_clicked(bool)
 {
     QString ip = QInputDialog::getText(this, tr("Connect to Server"), tr("Server address:"), QLineEdit::Normal, "127.0.0.1");
     emit Data::getInst()->remote->connectToServer(ip);
+    ui->statusLabel->setText(tr("Connecting..."));
 }
 
 void Gomoku::on_disconnectButton_clicked(bool)

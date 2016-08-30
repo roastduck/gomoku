@@ -9,6 +9,7 @@ ServerDialog::ServerDialog(QWidget *parent) :
     ui(new Ui::ServerDialog)
 {
     ui->setupUi(this);
+    ui->listeningLabel->hide();
     ui->cancelButton->hide();
 
     connect(Data::getInst()->remote, SIGNAL(serverError()), this, SLOT(promptServerError()));
@@ -36,6 +37,7 @@ void ServerDialog::on_setupButton_clicked(bool)
 {
     emit Data::getInst()->remote->setupServer(ui->ipInput->text());
     ui->setupButton->hide();
+    ui->listeningLabel->show();
     ui->cancelButton->show();
 }
 
@@ -49,5 +51,6 @@ void ServerDialog::on_cancelButton_clicked(bool)
 {
     emit Data::getInst()->remote->reset();
     ui->setupButton->show();
+    ui->listeningLabel->hide();
     ui->cancelButton->hide();
 }
