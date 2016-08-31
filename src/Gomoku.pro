@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     remoteinput.cpp \
     data.cpp \
     cross.cpp \
-    board.cpp
+    board.cpp \
+    ipinput.cpp
 
 HEADERS  += gomoku.h \
     serverdialog.h \
@@ -28,10 +29,12 @@ HEADERS  += gomoku.h \
     remoteinput.h \
     data.h \
     cross.h \
-    board.h
+    board.h \
+    ipinput.h
 
 FORMS    += gomoku.ui \
-    serverdialog.ui
+    serverdialog.ui \
+    ipinput.ui
 
 RESOURCES += \
     resource.qrc

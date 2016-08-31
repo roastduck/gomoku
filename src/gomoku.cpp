@@ -9,6 +9,7 @@
 #include "input.h"
 #include "const.h"
 #include "gomoku.h"
+#include "ipinput.h"
 #include "ui_gomoku.h"
 #include "remoteinput.h"
 #include "serverdialog.h"
@@ -94,7 +95,10 @@ void Gomoku::on_serverButton_clicked(bool)
 
 void Gomoku::on_clientButton_clicked(bool)
 {
-    QString ip = QInputDialog::getText(this, tr("Connect to Server"), tr("Server address:"), QLineEdit::Normal, "127.0.0.1");
+    //QString ip = QInputDialog::getText(this, tr("Connect to Server"), tr("Server address:"), QLineEdit::Normal, "127.0.0.1");
+    QString ip = IpInput::getText();
+    qDebug() << "ip = " << ip;
+    if (ip == "") return;
     emit Data::getInst()->remote->connectToServer(ip);
     ui->clientButton->setText(tr("Reconnect"));
     ui->statusLabel->setText(tr("Connecting..."));
