@@ -9,7 +9,7 @@
 
 Data *Data::instance = 0;
 
-Data::Data(QObject *parent) : QObject(parent)
+Data::Data(QObject *parent) : QObject(parent), showDangerous(false)
 {
     reset();
     local = new Input(this);

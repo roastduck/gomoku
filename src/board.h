@@ -15,6 +15,9 @@ public:
 
     void draw(int row, int column, bool color);
 
+    /// is dangerous for color `color`
+    bool isDangerous(int row, int column, bool color);
+
 signals:
     void win(bool color);
 

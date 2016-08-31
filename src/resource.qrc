@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="bomb.ico">../resource/bomb.ico</file>
+    </qresource>
+</RCC>

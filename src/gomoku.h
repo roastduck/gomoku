@@ -29,6 +29,9 @@ private slots:
     void on_clientButton_clicked(bool checked);
     void on_disconnectButton_clicked(bool checked);
     void on_readyButton_clicked(bool checked);
+    void on_dangButton_pressed();
+
+    void on_dangButton_released();
 
 private:
     Ui::Gomoku *ui;

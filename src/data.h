@@ -26,10 +26,15 @@ public:
     /// clear board and reset color
     void reset();
 
+    bool getLocalColor() { return localColor; }
+
     /// local player
     Input *local;
     /// remote player
     RemoteInput *remote;
+
+    bool showDangerous;
+    Board board;
 
 signals:
     /// output draw to board
@@ -58,8 +63,6 @@ private:
 
     bool localReady, remoteReady;
     bool localColor, currentColor;
-
-    Board board;
 
     static Data *instance;
 };

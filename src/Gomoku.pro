@@ -32,3 +32,6 @@ HEADERS  += gomoku.h \
 
 FORMS    += gomoku.ui \
     serverdialog.ui
+
+RESOURCES += \
+    resource.qrc

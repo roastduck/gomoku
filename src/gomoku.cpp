@@ -110,3 +110,19 @@ void Gomoku::on_readyButton_clicked(bool)
     Data::getInst()->setLocalReady();
     ui->readyButton->setDisabled(true);
 }
+
+void Gomoku::on_dangButton_pressed()
+{
+    Data::getInst()->showDangerous = true;
+    for (int i = 0; i < BOARD_SIZE; i++)
+        for (int j = 0; j < BOARD_SIZE; j++)
+            dynamic_cast<QGridLayout*>(ui->boardWidget->layout())->itemAtPosition(i, j)->widget()->update();
+}
+
+void Gomoku::on_dangButton_released()
+{
+    Data::getInst()->showDangerous = false;
+    for (int i = 0; i < BOARD_SIZE; i++)
+        for (int j = 0; j < BOARD_SIZE; j++)
+            dynamic_cast<QGridLayout*>(ui->boardWidget->layout())->itemAtPosition(i, j)->widget()->update();
+}

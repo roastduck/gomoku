@@ -2,7 +2,9 @@
 #include <QPen>
 #include <QBrush>
 #include <QColor>
+#include <QPixmap>
 #include <QPainter>
+#include "data.h"
 #include "cross.h"
 #include "const.h"
 
@@ -41,6 +43,13 @@ void Cross::paintEvent(QPaintEvent *)
         p.setPen(Qt::NoPen);
         p.setBrush(pieceColor ? Qt::white : Qt::black);
         p.drawEllipse(l * 0.1, l * 0.1, l * 0.8, l * 0.8);
+    }
+
+    if (Data::getInst()->showDangerous && Data::getInst()->board.isDangerous(row, column, Data::getInst()->getLocalColor()))
+    {
+        qDebug() << " -- position" << row << "," << column << "is dangerous";
+        QPixmap pixmap(":/bomb.ico");
+        p.drawPixmap(0, 0, l, l, pixmap);
     }
 }
 
