@@ -20,10 +20,15 @@ ServerDialog::ServerDialog(QWidget *parent) :
     connect(Data::getInst()->remote, SIGNAL(newClientList(const QList<QString> &)), this, SLOT(newClientList(const QList<QString> &)));
 
     foreach (const QHostAddress &address, QNetworkInterface::allAddresses())
-        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost))
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && ! address.isLoopback())
         {
-             ui->ipInput->setText(address.toString());
-             break;
+            quint32 addr = address.toIPv4Address();
+            quint32 linkLocalMin = QHostAddress("169.254.1.0").toIPv4Address();
+            quint32 linkLocalMax = QHostAddress("169.254.254.255").toIPv4Address();
+            if (addr >= linkLocalMin && addr <= linkLocalMax) continue;
+            //qDebug() << address.toString();
+            ui->ipInput->setText(address.toString());
+            break;
         }
 }
 
