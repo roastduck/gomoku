@@ -1,6 +1,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <QApplication>
+#include "data.h"
 #include "gomoku.h"
 
 int main(int argc, char *argv[])
@@ -11,5 +12,9 @@ int main(int argc, char *argv[])
     Gomoku w;
     w.show();
 
-    return a.exec();
+    int ret = a.exec();
+
+    Data::delInst();
+
+    return ret;
 }

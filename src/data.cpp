@@ -22,6 +22,15 @@ Data *Data::getInst()
     return instance ? instance : (instance = new Data());
 }
 
+void Data::delInst()
+{
+    if (instance)
+    {
+        delete instance;
+        instance = 0;
+    }
+}
+
 void Data::setLocalReady()
 {
     localReady = true;

@@ -43,6 +43,7 @@ void RemoteInput::acceptClient(int index)
 
 void RemoteInput::reset()
 {
+    qDebug() << "resetted";
     if (socket)
     {
         delete socket;

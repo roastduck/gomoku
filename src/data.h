@@ -16,6 +16,9 @@ public:
     /// Get singleton instance
     static Data *getInst();
 
+    /// Remove instance
+    static void delInst();
+
     /// set as ready to play
     void setLocalReady();
     void setRemoteReady();
