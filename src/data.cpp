@@ -13,7 +13,6 @@ Data::Data(QObject *parent) : QObject(parent)
     reset();
     local = new Input(this);
     remote = new RemoteInput(this);
-    connect(local, SIGNAL(draw(int,int)), remote, SLOT(notify(int,int)));
 }
 
 Data *Data::getInst()
@@ -37,15 +36,21 @@ void Data::setRemoteReady()
 void Data::reset()
 {
     localReady = remoteReady = false;
-    disconnect(0, 0, this, SLOT(drawOutputBlack(int,int)));
-    disconnect(0, 0, this, SLOT(drawOutputWhite(int,int)));
+    disconnect(this, SLOT(drawOutputBlack(int,int)));
+    disconnect(this, SLOT(drawOutputWhite(int,int)));
 }
 
 void Data::drawInput(int row, int column)
 {
-    if (localColor != currentColor) return;
+    if (localColor != currentColor || ! localReady || ! remoteReady) return;
+    currentColor = ! currentColor;
     emit local->draw(row, column);
     remote->send("draw", { JsonKeyValue("row", row), JsonKeyValue("column", column)});
+}
+
+void Data::sendRestart()
+{
+    remote->send("restart");
 }
 
 void Data::decideColor()
@@ -61,13 +66,21 @@ void Data::startGame(bool color)
     qDebug() << " -- use color " << color;
     localColor = color;
     currentColor = 0;
-    QMessageBox::information(this, "Color", color ? "You use white" : "You use black");
+    QMessageBox::information(0, "Color", color ? "You use white" : "You use black");
     connect(color ? remote : local, SIGNAL(draw(int,int)), this, SLOT(drawOutputBlack(int,int)));
     connect(color ? local : remote, SIGNAL(draw(int,int)), this, SLOT(drawOutputWhite(int,int)));
 }
 
-void Data::drawOutput(int row, int column, bool color)
+void Data::drawOutputWhite(int row, int column)
 {
-    Q_ASSERT(currentColor == color);
-    currentColor = ! currentColor;
+    qDebug() << " -- drew white " << row << " , " << column;
+    currentColor = 0;
+    emit drawOutput(row, column, 1);
+}
+
+void Data::drawOutputBlack(int row, int column)
+{
+    qDebug() << " -- drew black " << row << " , " << column;
+    currentColor = 1;
+    emit drawOutput(row, column, 0);
 }

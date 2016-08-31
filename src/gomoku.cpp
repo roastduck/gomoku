@@ -1,8 +1,12 @@
+#include <QDebug>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QGridLayout>
 #include <QInputDialog>
 #include "data.h"
+#include "cross.h"
 #include "input.h"
+#include "const.h"
 #include "gomoku.h"
 #include "ui_gomoku.h"
 #include "remoteinput.h"
@@ -14,10 +18,21 @@ Gomoku::Gomoku(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    for (int i = 0; i < BOARD_SIZE; i++)
+        for (int j = 0; j < BOARD_SIZE; j++)
+        {
+            Cross *cross = new Cross(i, j, ui->boardWidget);
+            connect(cross, SIGNAL(onClick(int,int)), Data::getInst(), SLOT(drawInput(int,int)));
+            dynamic_cast<QGridLayout*>(ui->boardWidget->layout())->addWidget(cross, i, j);
+        }
+
     connect(Data::getInst()->remote, SIGNAL(connectError()), this, SLOT(promptConnectError()));
     connect(Data::getInst()->remote, SIGNAL(hello()), this, SLOT(connected()));
+    connect(Data::getInst(), SIGNAL(drawOutput(int,int,bool)), this, SLOT(drawPiece(int,int,bool)));
 
     connect(ui->restartButton, SIGNAL(clicked(bool)), this, SLOT(restart()));
+    connect(ui->restartButton, SIGNAL(clicked(bool)), Data::getInst(), SLOT(sendRestart()));
+    connect(Data::getInst()->remote, SIGNAL(requestRestart()), this, SLOT(restart()));
 }
 
 Gomoku::~Gomoku()
@@ -46,6 +61,16 @@ void Gomoku::restart()
 {
     ui->readyButton->setDisabled(false);
     Data::getInst()->reset();
+    for (int i = 0; i < BOARD_SIZE; i++)
+        for (int j = 0; j < BOARD_SIZE; j++)
+            dynamic_cast<Cross*>(dynamic_cast<QGridLayout*>(ui->boardWidget->layout())->itemAtPosition(i, j)->widget())->reset();
+}
+
+void Gomoku::drawPiece(int row, int column, bool color)
+{
+    qDebug() << " -- draw (" << row << " , " << column << ") color: " << color;
+    Cross *cross = dynamic_cast<Cross*>(dynamic_cast<QGridLayout*>(ui->boardWidget->layout())->itemAtPosition(row, column)->widget());
+    cross->drawPiece(color);
 }
 
 void Gomoku::on_serverButton_clicked(bool)

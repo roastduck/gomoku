@@ -37,6 +37,8 @@ signals:
     void connectError();
     /// emitted when connection accepted by both side
     void hello();
+    /// emitted when the other user request restart
+    void requestRestart();
 
 public slots:
     /// setup a server listening to `addr`

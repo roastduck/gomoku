@@ -8,6 +8,8 @@
 /// TCP port
 const int PORT = 8388;
 
+const int BOARD_SIZE = 15;
+
 typedef QPair<QString, QJsonValue> JsonKeyValue;
 
 #endif // CONST_H

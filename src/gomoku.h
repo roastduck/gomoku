@@ -22,10 +22,11 @@ private slots:
     /// clear board and reset color
     void restart();
 
+    void drawPiece(int row, int column, bool color);
+
     void on_serverButton_clicked(bool checked);
     void on_clientButton_clicked(bool checked);
     void on_disconnectButton_clicked(bool checked);
-
     void on_readyButton_clicked(bool checked);
 
 private:

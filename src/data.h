@@ -25,26 +25,31 @@ public:
     /// clear board and reset color
     void reset();
 
-    /// input draw from user
-    void drawInput(int row, int column);
-
     /// local player
     Input *local;
     /// remote player
     RemoteInput *remote;
 
+signals:
+    /// output draw to board
+    void drawOutput(int row, int column, bool color);
+
+public slots:
+    /// input draw from user
+    void drawInput(int row, int column);
+
+    /// tell remote to restart
+    void sendRestart();
+
 private slots:
-    void drawOutputBlack(int row, int column) { drawOutput(row, column, 0); }
-    void drawOutputWhite(int row, int column) { drawOutput(row, column, 1); }
+    void drawOutputBlack(int row, int column);
+    void drawOutputWhite(int row, int column);
 
 private:
     explicit Data(QObject *parent = 0);
 
     /// decide color and tell remote side
     void decideColor();
-
-    /// output draw to board
-    void drawOutput(int row, int column, bool color);
 
     bool localReady, remoteReady;
     bool localColor, currentColor;

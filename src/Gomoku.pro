@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     serverdialog.cpp \
     input.cpp \
     remoteinput.cpp \
-    data.cpp
+    data.cpp \
+    cross.cpp
 
 HEADERS  += gomoku.h \
     serverdialog.h \
     const.h \
     input.h \
     remoteinput.h \
-    data.h
+    data.h \
+    cross.h
 
 FORMS    += gomoku.ui \
     serverdialog.ui
