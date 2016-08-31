@@ -30,6 +30,12 @@ void Cross::paintEvent(QPaintEvent *)
     if (column < BOARD_SIZE - 1)
         p.drawLine(l/2, l/2, l, l/2);
 
+    if (((row == 3 || row == 11) && (column == 3 || column == 11)) || (row == 7 && column == 7))
+    {
+        p.setPen(QPen(Qt::black, 7));
+        p.drawLine(l/2, l/2, l/2, l/2);
+    }
+
     if (hasPiece)
     {
         p.setPen(Qt::NoPen);
@@ -40,6 +46,7 @@ void Cross::paintEvent(QPaintEvent *)
 
 void Cross::mousePressEvent(QMouseEvent *event)
 {
-    emit onClick(row, column);
+    if (! hasPiece)
+        emit onClick(row, column);
     QWidget::mousePressEvent(event);
 }

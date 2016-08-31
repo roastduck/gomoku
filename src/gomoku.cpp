@@ -4,6 +4,7 @@
 #include <QGridLayout>
 #include <QInputDialog>
 #include "data.h"
+#include "board.h"
 #include "cross.h"
 #include "input.h"
 #include "const.h"
@@ -33,6 +34,8 @@ Gomoku::Gomoku(QWidget *parent) :
     connect(ui->restartButton, SIGNAL(clicked(bool)), this, SLOT(restart()));
     connect(ui->restartButton, SIGNAL(clicked(bool)), Data::getInst(), SLOT(sendRestart()));
     connect(Data::getInst()->remote, SIGNAL(requestRestart()), this, SLOT(restart()));
+
+    connect(Data::getInst(), SIGNAL(win(bool)), this, SLOT(promptWin(bool)));
 }
 
 Gomoku::~Gomoku()
@@ -42,17 +45,26 @@ Gomoku::~Gomoku()
 
 void Gomoku::promptConnectError()
 {
-    QMessageBox::warning(this, tr("Error"), tr("Connection failed"), QMessageBox::Close);
+    QMessageBox::warning(this, tr("Error"), tr("Disconnected"), QMessageBox::Close);
     ui->clientButton->setDisabled(false);
     ui->serverButton->setDisabled(false);
+    ui->readyButton->setDisabled(true);
+    ui->restartButton->setDisabled(true);
     ui->clientButton->setText(tr("Connect to Server"));
     ui->statusLabel->setText(tr("Not connected"));
+}
+
+void Gomoku::promptWin(bool color)
+{
+    QMessageBox::warning(this, tr("Game Ended"), color ? tr("White wins") : tr("Black wins"), QMessageBox::Close);
 }
 
 void Gomoku::connected()
 {
     ui->clientButton->setDisabled(true);
     ui->serverButton->setDisabled(true);
+    ui->readyButton->setDisabled(false);
+    ui->restartButton->setDisabled(false);
     ui->statusLabel->setText(tr("Connected"));
     restart();
 }

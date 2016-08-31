@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "data.h"
+
 #include "const.h"
 #include "input.h"
 #include "remoteinput.h"
@@ -13,6 +14,7 @@ Data::Data(QObject *parent) : QObject(parent)
     reset();
     local = new Input(this);
     remote = new RemoteInput(this);
+    connect(&board, SIGNAL(win(bool)), this, SLOT(winPrivate(bool)));
 }
 
 Data *Data::getInst()
@@ -36,8 +38,12 @@ void Data::setRemoteReady()
 void Data::reset()
 {
     localReady = remoteReady = false;
-    disconnect(this, SLOT(drawOutputBlack(int,int)));
-    disconnect(this, SLOT(drawOutputWhite(int,int)));
+    //bool success1 = disconnect(this, SLOT(drawOutputBlack(int,int)));
+    //bool success2 = disconnect(this, SLOT(drawOutputWhite(int,int))); why this doesn't work?
+    bool success1 = disconnect(local, SIGNAL(draw(int,int)), 0, 0);
+    bool success2 = disconnect(remote, SIGNAL(draw(int,int)), 0, 0);
+    qDebug() << " -- disconnection : " << success1 << success2;
+    board.reset();
 }
 
 void Data::drawInput(int row, int column)
@@ -75,6 +81,7 @@ void Data::drawOutputWhite(int row, int column)
 {
     qDebug() << " -- drew white " << row << " , " << column;
     currentColor = 0;
+    board.draw(row, column, 1);
     emit drawOutput(row, column, 1);
 }
 
@@ -82,5 +89,12 @@ void Data::drawOutputBlack(int row, int column)
 {
     qDebug() << " -- drew black " << row << " , " << column;
     currentColor = 1;
+    board.draw(row, column, 0);
     emit drawOutput(row, column, 0);
+}
+
+void Data::winPrivate(bool color)
+{
+    localReady = remoteReady = false;
+    emit win(color);
 }

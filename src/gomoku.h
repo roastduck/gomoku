@@ -18,6 +18,7 @@ public:
 
 private slots:
     void promptConnectError();
+    void promptWin(bool color);
     void connected();
     /// clear board and reset color
     void restart();

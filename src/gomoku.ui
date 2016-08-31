@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>676</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -111,6 +111,9 @@
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QPushButton" name="readyButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Ready</string>
             </property>
@@ -118,6 +121,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="restartButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Restart</string>
             </property>

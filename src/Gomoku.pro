@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     input.cpp \
     remoteinput.cpp \
     data.cpp \
-    cross.cpp
+    cross.cpp \
+    board.cpp
 
 HEADERS  += gomoku.h \
     serverdialog.h \
@@ -26,7 +27,8 @@ HEADERS  += gomoku.h \
     input.h \
     remoteinput.h \
     data.h \
-    cross.h
+    cross.h \
+    board.h
 
 FORMS    += gomoku.ui \
     serverdialog.ui

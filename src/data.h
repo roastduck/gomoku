@@ -2,6 +2,7 @@
 #define DATA_H
 
 #include <QObject>
+#include "board.h"
 #include "input.h"
 #include "remoteinput.h"
 
@@ -34,6 +35,9 @@ signals:
     /// output draw to board
     void drawOutput(int row, int column, bool color);
 
+    /// A color wins
+    void win(bool color);
+
 public slots:
     /// input draw from user
     void drawInput(int row, int column);
@@ -44,6 +48,7 @@ public slots:
 private slots:
     void drawOutputBlack(int row, int column);
     void drawOutputWhite(int row, int column);
+    void winPrivate(bool color);
 
 private:
     explicit Data(QObject *parent = 0);
@@ -53,6 +58,8 @@ private:
 
     bool localReady, remoteReady;
     bool localColor, currentColor;
+
+    Board board;
 
     static Data *instance;
 };
