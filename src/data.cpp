@@ -9,12 +9,26 @@
 
 Data *Data::instance = 0;
 
-Data::Data(QObject *parent) : QObject(parent), showDangerous(false)
+Data::Data(QObject *parent) : QObject(parent), showDangerous(false), connected(false)
 {
     reset();
     local = new Input(this);
     remote = new RemoteInput(this);
     connect(&board, SIGNAL(win(bool)), this, SLOT(winPrivate(bool)));
+}
+
+Data::~Data()
+{
+    if (local)
+    {
+        delete local;
+        local = 0;
+    }
+    if (remote)
+    {
+        delete remote;
+        remote = 0;
+    }
 }
 
 Data *Data::getInst()
@@ -47,11 +61,14 @@ void Data::setRemoteReady()
 void Data::reset()
 {
     localReady = remoteReady = false;
-    //bool success1 = disconnect(this, SLOT(drawOutputBlack(int,int)));
-    //bool success2 = disconnect(this, SLOT(drawOutputWhite(int,int))); why this doesn't work?
-    bool success1 = disconnect(local, SIGNAL(draw(int,int)), 0, 0);
-    bool success2 = disconnect(remote, SIGNAL(draw(int,int)), 0, 0);
-    qDebug() << " -- disconnection : " << success1 << success2;
+    if (connected)
+    {
+        //bool success1 = disconnect(this, SLOT(drawOutputBlack(int,int)));
+        //bool success2 = disconnect(this, SLOT(drawOutputWhite(int,int))); why this doesn't work?
+        bool success1 = disconnect(local, SIGNAL(draw(int,int)), 0, 0);
+        bool success2 = disconnect(remote, SIGNAL(draw(int,int)), 0, 0);
+        Q_ASSERT(success1 && success2);
+    }
     board.reset();
 }
 
@@ -84,6 +101,7 @@ void Data::startGame(bool color)
     QMessageBox::information(0, "Color", color ? "You use white" : "You use black");
     connect(color ? remote : local, SIGNAL(draw(int,int)), this, SLOT(drawOutputBlack(int,int)));
     connect(color ? local : remote, SIGNAL(draw(int,int)), this, SLOT(drawOutputWhite(int,int)));
+    connected = true;
 }
 
 void Data::drawOutputWhite(int row, int column)

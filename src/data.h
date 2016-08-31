@@ -60,12 +60,16 @@ private slots:
 
 private:
     explicit Data(QObject *parent = 0);
+    ~Data();
 
     /// decide color and tell remote side
     void decideColor();
 
     bool localReady, remoteReady;
     bool localColor, currentColor;
+
+    /// connected signal draw to slot drawOutputBlack/White
+    bool connected;
 
     static Data *instance;
 };
