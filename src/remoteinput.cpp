@@ -101,54 +101,57 @@ void RemoteInput::clientClosed(QObject *_socket)
 
 void RemoteInput::onData()
 {
-    QByteArray arr = socket->readAll();
-    qDebug() << "received " << arr;
-    dataReceived += arr;
-    while (true)
+    while (socket->bytesAvailable())
     {
-        QJsonParseError error;
-        QJsonDocument json = QJsonDocument::fromJson(dataReceived, &error);
-        QJsonObject obj;
-        switch (error.error)
+        QByteArray arr = socket->readAll();
+        qDebug() << "received " << arr;
+        dataReceived += arr;
+        while (true)
         {
-        case QJsonParseError::GarbageAtEnd:
-            obj = QJsonDocument::fromJson(dataReceived.left(error.offset)).object();
-            dataReceived = dataReceived.right(dataReceived.length() - error.offset);
-            break;
-        case QJsonParseError::NoError:
-            obj = json.object();
-            dataReceived.clear();
-            break;
-        default:
-            break;
-        }
-        if (obj == QJsonObject()) break;
+            QJsonParseError error;
+            QJsonDocument json = QJsonDocument::fromJson(dataReceived, &error);
+            QJsonObject obj;
+            switch (error.error)
+            {
+            case QJsonParseError::GarbageAtEnd:
+                obj = QJsonDocument::fromJson(dataReceived.left(error.offset)).object();
+                dataReceived = dataReceived.right(dataReceived.length() - error.offset);
+                break;
+            case QJsonParseError::NoError:
+                obj = json.object();
+                dataReceived.clear();
+                break;
+            default:
+                break;
+            }
+            if (obj == QJsonObject()) break;
 
-        QString method = obj["method"].toString();
-        QJsonObject params = obj["params"].toObject();
-        qDebug() << "method " << method;
-        qDebug() << "params " << params;
-        if (method == "hello")
-        {
-            emit hello();
-            send("helloAck");
-        } else if (method == "helloAck")
-        {
-            emit hello();
-        } else if (method == "ready")
-        {
-            Data::getInst()->setRemoteReady();
-        } else if (method == "startGame")
-        {
-            Data::getInst()->startGame(params["color"].toBool());
-        } else if (method == "draw")
-        {
-            emit draw(params["row"].toInt(), params["column"].toInt());
-        } else if (method == "restart")
-        {
-            emit requestRestart();
-        } else
-            Q_ASSERT(false);
+            QString method = obj["method"].toString();
+            QJsonObject params = obj["params"].toObject();
+            qDebug() << "method " << method;
+            qDebug() << "params " << params;
+            if (method == "hello")
+            {
+                emit hello();
+                send("helloAck");
+            } else if (method == "helloAck")
+            {
+                emit hello();
+            } else if (method == "ready")
+            {
+                Data::getInst()->setRemoteReady();
+            } else if (method == "startGame")
+            {
+                Data::getInst()->startGame(params["color"].toBool());
+            } else if (method == "draw")
+            {
+                emit draw(params["row"].toInt(), params["column"].toInt());
+            } else if (method == "restart")
+            {
+                emit requestRestart();
+            } else
+                Q_ASSERT(false);
+        }
     }
 }
 
