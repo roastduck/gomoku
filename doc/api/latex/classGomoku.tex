@@ -1,0 +1,186 @@
+\hypertarget{classGomoku}{}\section{Gomoku Class Reference}
+\label{classGomoku}\index{Gomoku@{Gomoku}}
+
+
+Main window.  
+
+
+
+
+{\ttfamily \#include $<$gomoku.\+h$>$}
+
+
+
+Inheritance diagram for Gomoku\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classGomoku__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gomoku\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classGomoku__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGomoku_a15ad6f6d31efe9e4828ba79985d8880d}{Gomoku} (Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{classGomoku_a13a08a648094406111ba1b8b76047e37}{$\sim$\+Gomoku} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGomoku_aafba38e2b2db2f0f0262a04b371b65b8}{prompt\+Connect\+Error} ()
+\item 
+void \hyperlink{classGomoku_a32aa94d4d8d3e340cd719e84ad51409d}{prompt\+Win} (bool color)
+\item 
+void \hyperlink{classGomoku_af7ab4e7e8061535ad746cb839f941fc6}{connected} ()
+\item 
+void \hyperlink{classGomoku_a9dde3f2dc64f4328918b0050e9635f98}{restart} ()
+\begin{DoxyCompactList}\small\item\em clear board and reset color \end{DoxyCompactList}\item 
+void \hyperlink{classGomoku_ada061f4b14409da12995cbe5e257e67e}{draw\+Piece} (int row, int column, bool color)
+\item 
+void \hyperlink{classGomoku_a763119d315fe24ef55bc581e67836856}{on\+\_\+server\+Button\+\_\+clicked} (bool checked)
+\item 
+void \hyperlink{classGomoku_a69e00fb73a572a157bd93e9720987c54}{on\+\_\+client\+Button\+\_\+clicked} (bool checked)
+\item 
+void \hyperlink{classGomoku_a8722500f524e6902a423ec33f31159a9}{on\+\_\+disconnect\+Button\+\_\+clicked} (bool checked)
+\item 
+void \hyperlink{classGomoku_a123db139238bd134421ae0cd7756bc84}{on\+\_\+ready\+Button\+\_\+clicked} (bool checked)
+\item 
+void \hyperlink{classGomoku_a0a1c400cb33e45b092931f99de732dd0}{on\+\_\+dang\+Button\+\_\+pressed} ()
+\item 
+void \hyperlink{classGomoku_aa703e7bc0d628d98f6f20a6f861e92d7}{on\+\_\+dang\+Button\+\_\+released} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Gomoku $\ast$ \hyperlink{classGomoku_ac7bd58f9bde18d468518e5f78c458cf9}{ui}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main window. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Gomoku@{Gomoku}!Gomoku@{Gomoku}}
+\index{Gomoku@{Gomoku}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{Gomoku(\+Q\+Widget $\ast$parent=0)}{Gomoku(QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Gomoku\+::\+Gomoku (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classGomoku_a15ad6f6d31efe9e4828ba79985d8880d}{}\label{classGomoku_a15ad6f6d31efe9e4828ba79985d8880d}
+\index{Gomoku@{Gomoku}!````~Gomoku@{$\sim$\+Gomoku}}
+\index{````~Gomoku@{$\sim$\+Gomoku}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{$\sim$\+Gomoku()}{~Gomoku()}}]{\setlength{\rightskip}{0pt plus 5cm}Gomoku\+::$\sim$\+Gomoku (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGomoku_a13a08a648094406111ba1b8b76047e37}{}\label{classGomoku_a13a08a648094406111ba1b8b76047e37}
+
+
+\subsection{Member Function Documentation}
+\index{Gomoku@{Gomoku}!connected@{connected}}
+\index{connected@{connected}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{connected}{connected}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::connected (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_af7ab4e7e8061535ad746cb839f941fc6}{}\label{classGomoku_af7ab4e7e8061535ad746cb839f941fc6}
+\index{Gomoku@{Gomoku}!draw\+Piece@{draw\+Piece}}
+\index{draw\+Piece@{draw\+Piece}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{draw\+Piece}{drawPiece}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::draw\+Piece (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_ada061f4b14409da12995cbe5e257e67e}{}\label{classGomoku_ada061f4b14409da12995cbe5e257e67e}
+\index{Gomoku@{Gomoku}!on\+\_\+client\+Button\+\_\+clicked@{on\+\_\+client\+Button\+\_\+clicked}}
+\index{on\+\_\+client\+Button\+\_\+clicked@{on\+\_\+client\+Button\+\_\+clicked}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+client\+Button\+\_\+clicked}{on_clientButton_clicked}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+client\+Button\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a69e00fb73a572a157bd93e9720987c54}{}\label{classGomoku_a69e00fb73a572a157bd93e9720987c54}
+\index{Gomoku@{Gomoku}!on\+\_\+dang\+Button\+\_\+pressed@{on\+\_\+dang\+Button\+\_\+pressed}}
+\index{on\+\_\+dang\+Button\+\_\+pressed@{on\+\_\+dang\+Button\+\_\+pressed}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+dang\+Button\+\_\+pressed}{on_dangButton_pressed}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+dang\+Button\+\_\+pressed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a0a1c400cb33e45b092931f99de732dd0}{}\label{classGomoku_a0a1c400cb33e45b092931f99de732dd0}
+\index{Gomoku@{Gomoku}!on\+\_\+dang\+Button\+\_\+released@{on\+\_\+dang\+Button\+\_\+released}}
+\index{on\+\_\+dang\+Button\+\_\+released@{on\+\_\+dang\+Button\+\_\+released}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+dang\+Button\+\_\+released}{on_dangButton_released}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+dang\+Button\+\_\+released (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_aa703e7bc0d628d98f6f20a6f861e92d7}{}\label{classGomoku_aa703e7bc0d628d98f6f20a6f861e92d7}
+\index{Gomoku@{Gomoku}!on\+\_\+disconnect\+Button\+\_\+clicked@{on\+\_\+disconnect\+Button\+\_\+clicked}}
+\index{on\+\_\+disconnect\+Button\+\_\+clicked@{on\+\_\+disconnect\+Button\+\_\+clicked}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+disconnect\+Button\+\_\+clicked}{on_disconnectButton_clicked}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+disconnect\+Button\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a8722500f524e6902a423ec33f31159a9}{}\label{classGomoku_a8722500f524e6902a423ec33f31159a9}
+\index{Gomoku@{Gomoku}!on\+\_\+ready\+Button\+\_\+clicked@{on\+\_\+ready\+Button\+\_\+clicked}}
+\index{on\+\_\+ready\+Button\+\_\+clicked@{on\+\_\+ready\+Button\+\_\+clicked}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+ready\+Button\+\_\+clicked}{on_readyButton_clicked}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+ready\+Button\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a123db139238bd134421ae0cd7756bc84}{}\label{classGomoku_a123db139238bd134421ae0cd7756bc84}
+\index{Gomoku@{Gomoku}!on\+\_\+server\+Button\+\_\+clicked@{on\+\_\+server\+Button\+\_\+clicked}}
+\index{on\+\_\+server\+Button\+\_\+clicked@{on\+\_\+server\+Button\+\_\+clicked}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{on\+\_\+server\+Button\+\_\+clicked}{on_serverButton_clicked}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::on\+\_\+server\+Button\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a763119d315fe24ef55bc581e67836856}{}\label{classGomoku_a763119d315fe24ef55bc581e67836856}
+\index{Gomoku@{Gomoku}!prompt\+Connect\+Error@{prompt\+Connect\+Error}}
+\index{prompt\+Connect\+Error@{prompt\+Connect\+Error}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{prompt\+Connect\+Error}{promptConnectError}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::prompt\+Connect\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_aafba38e2b2db2f0f0262a04b371b65b8}{}\label{classGomoku_aafba38e2b2db2f0f0262a04b371b65b8}
+\index{Gomoku@{Gomoku}!prompt\+Win@{prompt\+Win}}
+\index{prompt\+Win@{prompt\+Win}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{prompt\+Win}{promptWin}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::prompt\+Win (
+\begin{DoxyParamCaption}
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a32aa94d4d8d3e340cd719e84ad51409d}{}\label{classGomoku_a32aa94d4d8d3e340cd719e84ad51409d}
+\index{Gomoku@{Gomoku}!restart@{restart}}
+\index{restart@{restart}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{restart}{restart}}]{\setlength{\rightskip}{0pt plus 5cm}void Gomoku\+::restart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classGomoku_a9dde3f2dc64f4328918b0050e9635f98}{}\label{classGomoku_a9dde3f2dc64f4328918b0050e9635f98}
+
+
+clear board and reset color 
+
+
+
+\subsection{Member Data Documentation}
+\index{Gomoku@{Gomoku}!ui@{ui}}
+\index{ui@{ui}!Gomoku@{Gomoku}}
+\subsubsection[{\texorpdfstring{ui}{ui}}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+Gomoku$\ast$ Gomoku\+::ui\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGomoku_ac7bd58f9bde18d468518e5f78c458cf9}{}\label{classGomoku_ac7bd58f9bde18d468518e5f78c458cf9}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gomoku_8h}{gomoku.\+h}\item 
+\hyperlink{gomoku_8cpp}{gomoku.\+cpp}\end{DoxyCompactItemize}

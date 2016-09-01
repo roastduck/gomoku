@@ -1,0 +1,312 @@
+\hypertarget{classRemoteInput}{}\section{Remote\+Input Class Reference}
+\label{classRemoteInput}\index{Remote\+Input@{Remote\+Input}}
+
+
+User input from remote.  
+
+
+
+
+{\ttfamily \#include $<$remoteinput.\+h$>$}
+
+
+
+Inheritance diagram for Remote\+Input\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classRemoteInput__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Remote\+Input\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classRemoteInput__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRemoteInput_a433cbb8d886d2c4b8dd61afcc40ee237}{setup\+Server} (const Q\+String \&addr)
+\begin{DoxyCompactList}\small\item\em setup a server listening to {\ttfamily addr} \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_ac7b675466378716bf4b60481dac71777}{accept\+Client} (int index)
+\begin{DoxyCompactList}\small\item\em accept a client to be working socket {\ttfamily socket} \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_ac7268f7b0c862ae1d45e7c85ed40b975}{reset} ()
+\begin{DoxyCompactList}\small\item\em delete server and socket \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_a59e3292c1516aa98ffe4ba6f6a318379}{connect\+To\+Server} (const Q\+String \&addr)
+\begin{DoxyCompactList}\small\item\em connect to server \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRemoteInput_a03854b31b3bd34a0c6714e34ea97fa51}{new\+Client\+List} (const Q\+List$<$ Q\+String $>$ \&list)
+\begin{DoxyCompactList}\small\item\em emitted when client list changed \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_a220a9df96569060dbaa459e4260ba5ac}{server\+Error} ()
+\begin{DoxyCompactList}\small\item\em emitted when unable to setup server \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_ace137f88c2ecb10d206282be259be88b}{connect\+Error} ()
+\begin{DoxyCompactList}\small\item\em emitted when connection fails \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_addd302fec13370bfc6818d5915844973}{hello} ()
+\begin{DoxyCompactList}\small\item\em emitted when connection accepted by both side \end{DoxyCompactList}\item 
+void \hyperlink{classRemoteInput_a9e8cb56fd11439e6bc12dd369d7ec4d1}{request\+Restart} ()
+\begin{DoxyCompactList}\small\item\em emitted when the other user request restart \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRemoteInput_a7d80d0cdef9461614408a40dcc86536d}{Remote\+Input} (Q\+Object $\ast$parent)
+\item 
+\hyperlink{classRemoteInput_afa5a81b65b2cb9063263094492bbfcb0}{$\sim$\+Remote\+Input} ()
+\item 
+bool \hyperlink{classRemoteInput_ad4282349a4e2f17e277a5cde678fd295}{is\+Server} ()
+\item 
+void \hyperlink{classRemoteInput_aef618974f5cad6637ddce434dae2bcf2}{send} (const Q\+String \&method, const Q\+Json\+Object \&params=Q\+Json\+Object())
+\begin{DoxyCompactList}\small\item\em Call remote method in J\+S\+ON format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRemoteInput_a9185f78a38ff6504229604c90236d78b}{new\+Client} ()
+\item 
+void \hyperlink{classRemoteInput_a8d09dd6f3f7cd07bfd09a31c2ed47856}{client\+Closed} (Q\+Object $\ast$\+\_\+socket)
+\item 
+void \hyperlink{classRemoteInput_ae7ae71e93d5630bf16b2e624046d7560}{on\+Data} ()
+\begin{DoxyCompactList}\small\item\em When data blocks received. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRemoteInput_a102e5869f429f046065582a281854f73}{setup\+Socket} ()
+\item 
+void \hyperlink{classRemoteInput_a31ec7cb4bea4187c5ad13ef4293c3904}{new\+Client\+List\+Emitter} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Pointer$<$ Q\+Tcp\+Server $>$ \hyperlink{classRemoteInput_a85fb06e7f927436c6fe959935afa4185}{server}
+\item 
+Q\+List$<$ Q\+Pointer$<$ Q\+Tcp\+Socket $>$ $>$ \hyperlink{classRemoteInput_a8efa826116b9bed6bce016c4f6aedced}{pending\+Sockets}
+\item 
+Q\+Pointer$<$ Q\+Tcp\+Socket $>$ \hyperlink{classRemoteInput_a4d02f25eaa512b9dc5459d8296f1d11c}{socket}
+\begin{DoxyCompactList}\small\item\em The socket that is working, no longer as server or client. \end{DoxyCompactList}\item 
+Q\+Signal\+Mapper $\ast$ \hyperlink{classRemoteInput_a58e7c3fa294e6489d82be7c0aad27fdb}{close\+Mapper}
+\begin{DoxyCompactList}\small\item\em transfer disconnection signal \end{DoxyCompactList}\item 
+Q\+Byte\+Array \hyperlink{classRemoteInput_a32118b1d5726b5435b43b4a80e2b2532}{data\+Received}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+User input from remote. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Remote\+Input@{Remote\+Input}!Remote\+Input@{Remote\+Input}}
+\index{Remote\+Input@{Remote\+Input}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{Remote\+Input(\+Q\+Object $\ast$parent)}{RemoteInput(QObject *parent)}}]{\setlength{\rightskip}{0pt plus 5cm}Remote\+Input\+::\+Remote\+Input (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classRemoteInput_a7d80d0cdef9461614408a40dcc86536d}{}\label{classRemoteInput_a7d80d0cdef9461614408a40dcc86536d}
+\index{Remote\+Input@{Remote\+Input}!````~Remote\+Input@{$\sim$\+Remote\+Input}}
+\index{````~Remote\+Input@{$\sim$\+Remote\+Input}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{$\sim$\+Remote\+Input()}{~RemoteInput()}}]{\setlength{\rightskip}{0pt plus 5cm}Remote\+Input\+::$\sim$\+Remote\+Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRemoteInput_afa5a81b65b2cb9063263094492bbfcb0}{}\label{classRemoteInput_afa5a81b65b2cb9063263094492bbfcb0}
+
+
+\subsection{Member Function Documentation}
+\index{Remote\+Input@{Remote\+Input}!accept\+Client@{accept\+Client}}
+\index{accept\+Client@{accept\+Client}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{accept\+Client}{acceptClient}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::accept\+Client (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classRemoteInput_ac7b675466378716bf4b60481dac71777}{}\label{classRemoteInput_ac7b675466378716bf4b60481dac71777}
+
+
+accept a client to be working socket {\ttfamily socket} 
+
+\index{Remote\+Input@{Remote\+Input}!client\+Closed@{client\+Closed}}
+\index{client\+Closed@{client\+Closed}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{client\+Closed}{clientClosed}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::client\+Closed (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classRemoteInput_a8d09dd6f3f7cd07bfd09a31c2ed47856}{}\label{classRemoteInput_a8d09dd6f3f7cd07bfd09a31c2ed47856}
+\index{Remote\+Input@{Remote\+Input}!connect\+Error@{connect\+Error}}
+\index{connect\+Error@{connect\+Error}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{connect\+Error}{connectError}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::connect\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classRemoteInput_ace137f88c2ecb10d206282be259be88b}{}\label{classRemoteInput_ace137f88c2ecb10d206282be259be88b}
+
+
+emitted when connection fails 
+
+\index{Remote\+Input@{Remote\+Input}!connect\+To\+Server@{connect\+To\+Server}}
+\index{connect\+To\+Server@{connect\+To\+Server}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{connect\+To\+Server}{connectToServer}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::connect\+To\+Server (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classRemoteInput_a59e3292c1516aa98ffe4ba6f6a318379}{}\label{classRemoteInput_a59e3292c1516aa98ffe4ba6f6a318379}
+
+
+connect to server 
+
+\index{Remote\+Input@{Remote\+Input}!hello@{hello}}
+\index{hello@{hello}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{hello}{hello}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::hello (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classRemoteInput_addd302fec13370bfc6818d5915844973}{}\label{classRemoteInput_addd302fec13370bfc6818d5915844973}
+
+
+emitted when connection accepted by both side 
+
+\index{Remote\+Input@{Remote\+Input}!is\+Server@{is\+Server}}
+\index{is\+Server@{is\+Server}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{is\+Server()}{isServer()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Remote\+Input\+::is\+Server (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRemoteInput_ad4282349a4e2f17e277a5cde678fd295}{}\label{classRemoteInput_ad4282349a4e2f17e277a5cde678fd295}
+\index{Remote\+Input@{Remote\+Input}!new\+Client@{new\+Client}}
+\index{new\+Client@{new\+Client}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{new\+Client}{newClient}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::new\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classRemoteInput_a9185f78a38ff6504229604c90236d78b}{}\label{classRemoteInput_a9185f78a38ff6504229604c90236d78b}
+\index{Remote\+Input@{Remote\+Input}!new\+Client\+List@{new\+Client\+List}}
+\index{new\+Client\+List@{new\+Client\+List}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{new\+Client\+List}{newClientList}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::new\+Client\+List (
+\begin{DoxyParamCaption}
+\item[{const Q\+List$<$ Q\+String $>$ \&}]{list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classRemoteInput_a03854b31b3bd34a0c6714e34ea97fa51}{}\label{classRemoteInput_a03854b31b3bd34a0c6714e34ea97fa51}
+
+
+emitted when client list changed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & of ips of clients \\
+\hline
+\end{DoxyParams}
+\index{Remote\+Input@{Remote\+Input}!new\+Client\+List\+Emitter@{new\+Client\+List\+Emitter}}
+\index{new\+Client\+List\+Emitter@{new\+Client\+List\+Emitter}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{new\+Client\+List\+Emitter()}{newClientListEmitter()}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::new\+Client\+List\+Emitter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a31ec7cb4bea4187c5ad13ef4293c3904}{}\label{classRemoteInput_a31ec7cb4bea4187c5ad13ef4293c3904}
+\index{Remote\+Input@{Remote\+Input}!on\+Data@{on\+Data}}
+\index{on\+Data@{on\+Data}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{on\+Data}{onData}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::on\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classRemoteInput_ae7ae71e93d5630bf16b2e624046d7560}{}\label{classRemoteInput_ae7ae71e93d5630bf16b2e624046d7560}
+
+
+When data blocks received. 
+
+\index{Remote\+Input@{Remote\+Input}!request\+Restart@{request\+Restart}}
+\index{request\+Restart@{request\+Restart}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{request\+Restart}{requestRestart}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::request\+Restart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classRemoteInput_a9e8cb56fd11439e6bc12dd369d7ec4d1}{}\label{classRemoteInput_a9e8cb56fd11439e6bc12dd369d7ec4d1}
+
+
+emitted when the other user request restart 
+
+\index{Remote\+Input@{Remote\+Input}!reset@{reset}}
+\index{reset@{reset}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{reset}{reset}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classRemoteInput_ac7268f7b0c862ae1d45e7c85ed40b975}{}\label{classRemoteInput_ac7268f7b0c862ae1d45e7c85ed40b975}
+
+
+delete server and socket 
+
+\index{Remote\+Input@{Remote\+Input}!send@{send}}
+\index{send@{send}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{send(const Q\+String \&method, const Q\+Json\+Object \&params=\+Q\+Json\+Object())}{send(const QString &method, const QJsonObject &params=QJsonObject())}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::send (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{method, }
+\item[{const Q\+Json\+Object \&}]{params = {\ttfamily QJsonObject()}}
+\end{DoxyParamCaption}
+)}\hypertarget{classRemoteInput_aef618974f5cad6637ddce434dae2bcf2}{}\label{classRemoteInput_aef618974f5cad6637ddce434dae2bcf2}
+
+
+Call remote method in J\+S\+ON format. 
+
+\index{Remote\+Input@{Remote\+Input}!server\+Error@{server\+Error}}
+\index{server\+Error@{server\+Error}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{server\+Error}{serverError}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::server\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classRemoteInput_a220a9df96569060dbaa459e4260ba5ac}{}\label{classRemoteInput_a220a9df96569060dbaa459e4260ba5ac}
+
+
+emitted when unable to setup server 
+
+\index{Remote\+Input@{Remote\+Input}!setup\+Server@{setup\+Server}}
+\index{setup\+Server@{setup\+Server}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{setup\+Server}{setupServer}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::setup\+Server (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classRemoteInput_a433cbb8d886d2c4b8dd61afcc40ee237}{}\label{classRemoteInput_a433cbb8d886d2c4b8dd61afcc40ee237}
+
+
+setup a server listening to {\ttfamily addr} 
+
+\index{Remote\+Input@{Remote\+Input}!setup\+Socket@{setup\+Socket}}
+\index{setup\+Socket@{setup\+Socket}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{setup\+Socket()}{setupSocket()}}]{\setlength{\rightskip}{0pt plus 5cm}void Remote\+Input\+::setup\+Socket (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a102e5869f429f046065582a281854f73}{}\label{classRemoteInput_a102e5869f429f046065582a281854f73}
+
+
+\subsection{Member Data Documentation}
+\index{Remote\+Input@{Remote\+Input}!close\+Mapper@{close\+Mapper}}
+\index{close\+Mapper@{close\+Mapper}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{close\+Mapper}{closeMapper}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Signal\+Mapper$\ast$ Remote\+Input\+::close\+Mapper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a58e7c3fa294e6489d82be7c0aad27fdb}{}\label{classRemoteInput_a58e7c3fa294e6489d82be7c0aad27fdb}
+
+
+transfer disconnection signal 
+
+\index{Remote\+Input@{Remote\+Input}!data\+Received@{data\+Received}}
+\index{data\+Received@{data\+Received}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{data\+Received}{dataReceived}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Byte\+Array Remote\+Input\+::data\+Received\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a32118b1d5726b5435b43b4a80e2b2532}{}\label{classRemoteInput_a32118b1d5726b5435b43b4a80e2b2532}
+\index{Remote\+Input@{Remote\+Input}!pending\+Sockets@{pending\+Sockets}}
+\index{pending\+Sockets@{pending\+Sockets}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{pending\+Sockets}{pendingSockets}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$ Q\+Pointer$<$Q\+Tcp\+Socket$>$ $>$ Remote\+Input\+::pending\+Sockets\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a8efa826116b9bed6bce016c4f6aedced}{}\label{classRemoteInput_a8efa826116b9bed6bce016c4f6aedced}
+\index{Remote\+Input@{Remote\+Input}!server@{server}}
+\index{server@{server}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{server}{server}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<$Q\+Tcp\+Server$>$ Remote\+Input\+::server\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a85fb06e7f927436c6fe959935afa4185}{}\label{classRemoteInput_a85fb06e7f927436c6fe959935afa4185}
+\index{Remote\+Input@{Remote\+Input}!socket@{socket}}
+\index{socket@{socket}!Remote\+Input@{Remote\+Input}}
+\subsubsection[{\texorpdfstring{socket}{socket}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<$Q\+Tcp\+Socket$>$ Remote\+Input\+::socket\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classRemoteInput_a4d02f25eaa512b9dc5459d8296f1d11c}{}\label{classRemoteInput_a4d02f25eaa512b9dc5459d8296f1d11c}
+
+
+The socket that is working, no longer as server or client. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{remoteinput_8h}{remoteinput.\+h}\item 
+\hyperlink{remoteinput_8cpp}{remoteinput.\+cpp}\end{DoxyCompactItemize}

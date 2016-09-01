@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classBoard.html" title="Gomoku board. " alt="" coords="125,5,181,32"/>
+<area shape="rect" id="node3" href="$classData.html" title="Manages all data. " alt="" coords="128,56,179,83"/>
+<area shape="rect" id="node4" href="$classGetter.html" title="Getter" alt="" coords="124,107,183,133"/>
+<area shape="rect" id="node5" href="$classInput.html" title="Base class for user input from local or remote. " alt="" coords="128,157,179,184"/>
+<area shape="rect" id="node6" href="$classRemoteInput.html" title="User input from remote. " alt="" coords="231,157,328,184"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Data" name="Data">
+<area shape="rect" id="node3" href="$classBoard.html" title="Gomoku board. " alt="" coords="18,233,132,384"/>
+<area shape="rect" id="node4" href="$classInput.html" title="Base class for user input from local or remote. " alt="" coords="117,132,188,209"/>
+<area shape="rect" id="node5" href="$classRemoteInput.html" title="User input from remote. " alt="" coords="217,408,376,720"/>
+</map>

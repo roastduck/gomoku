@@ -1,0 +1,134 @@
+\hypertarget{classBoard}{}\section{Board Class Reference}
+\label{classBoard}\index{Board@{Board}}
+
+
+\hyperlink{classGomoku}{Gomoku} board.  
+
+
+
+
+{\ttfamily \#include $<$board.\+h$>$}
+
+
+
+Inheritance diagram for Board\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classBoard__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Board\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classBoard__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBoard_ac3725569d7c112f0fbf8fc9a4aee1477}{win} (bool color)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBoard_a40471004facb958cf0e60840cd441ab8}{Board} (Q\+Object $\ast$parent=0)
+\item 
+void \hyperlink{classBoard_aaef819a8d1a10c35d9f802195802236e}{reset} ()
+\item 
+void \hyperlink{classBoard_a9d29e2f76551363e49e93467f7ca7ece}{draw} (int row, int column, bool color)
+\item 
+bool \hyperlink{classBoard_aec12d14fa7095b68e176dd7c6e8bf73b}{is\+Dangerous} (int row, int column, bool color)
+\begin{DoxyCompactList}\small\item\em is dangerous for color {\ttfamily color} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classBoard_a2f339d1294177dc9cb1a0c160b1427f5}{in\+Board} (int row, int column)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{classBoard_a362b986e66494ee079a6dd2b8b08075f}{walk} \mbox{[}8\mbox{]}\mbox{[}2\mbox{]} = \{\{-\/1,0\}, \{-\/1,1\}, \{0,1\}, \{1,1\}, \{1,0\}, \{1,-\/1\}, \{0,-\/1\}, \{-\/1,-\/1\}\}
+\item 
+int \hyperlink{classBoard_af4a66521596ff3eef6685b7e15438977}{board} \mbox{[}\hyperlink{const_8h_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\+O\+A\+R\+D\+\_\+\+S\+I\+ZE}\mbox{]}\mbox{[}\hyperlink{const_8h_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\+O\+A\+R\+D\+\_\+\+S\+I\+ZE}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classGomoku}{Gomoku} board. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection[{\texorpdfstring{Board(\+Q\+Object $\ast$parent=0)}{Board(QObject *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Board\+::\+Board (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classBoard_a40471004facb958cf0e60840cd441ab8}{}\label{classBoard_a40471004facb958cf0e60840cd441ab8}
+
+
+\subsection{Member Function Documentation}
+\index{Board@{Board}!draw@{draw}}
+\index{draw@{draw}!Board@{Board}}
+\subsubsection[{\texorpdfstring{draw(int row, int column, bool color)}{draw(int row, int column, bool color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Board\+::draw (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classBoard_a9d29e2f76551363e49e93467f7ca7ece}{}\label{classBoard_a9d29e2f76551363e49e93467f7ca7ece}
+\index{Board@{Board}!in\+Board@{in\+Board}}
+\index{in\+Board@{in\+Board}!Board@{Board}}
+\subsubsection[{\texorpdfstring{in\+Board(int row, int column)}{inBoard(int row, int column)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\+::in\+Board (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classBoard_a2f339d1294177dc9cb1a0c160b1427f5}{}\label{classBoard_a2f339d1294177dc9cb1a0c160b1427f5}
+\index{Board@{Board}!is\+Dangerous@{is\+Dangerous}}
+\index{is\+Dangerous@{is\+Dangerous}!Board@{Board}}
+\subsubsection[{\texorpdfstring{is\+Dangerous(int row, int column, bool color)}{isDangerous(int row, int column, bool color)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\+::is\+Dangerous (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classBoard_aec12d14fa7095b68e176dd7c6e8bf73b}{}\label{classBoard_aec12d14fa7095b68e176dd7c6e8bf73b}
+
+
+is dangerous for color {\ttfamily color} 
+
+\index{Board@{Board}!reset@{reset}}
+\index{reset@{reset}!Board@{Board}}
+\subsubsection[{\texorpdfstring{reset()}{reset()}}]{\setlength{\rightskip}{0pt plus 5cm}void Board\+::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBoard_aaef819a8d1a10c35d9f802195802236e}{}\label{classBoard_aaef819a8d1a10c35d9f802195802236e}
+\index{Board@{Board}!win@{win}}
+\index{win@{win}!Board@{Board}}
+\subsubsection[{\texorpdfstring{win}{win}}]{\setlength{\rightskip}{0pt plus 5cm}void Board\+::win (
+\begin{DoxyParamCaption}
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classBoard_ac3725569d7c112f0fbf8fc9a4aee1477}{}\label{classBoard_ac3725569d7c112f0fbf8fc9a4aee1477}
+
+
+\subsection{Member Data Documentation}
+\index{Board@{Board}!board@{board}}
+\index{board@{board}!Board@{Board}}
+\subsubsection[{\texorpdfstring{board}{board}}]{\setlength{\rightskip}{0pt plus 5cm}int Board\+::board\mbox{[}{\bf B\+O\+A\+R\+D\+\_\+\+S\+I\+ZE}\mbox{]}\mbox{[}{\bf B\+O\+A\+R\+D\+\_\+\+S\+I\+ZE}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classBoard_af4a66521596ff3eef6685b7e15438977}{}\label{classBoard_af4a66521596ff3eef6685b7e15438977}
+\index{Board@{Board}!walk@{walk}}
+\index{walk@{walk}!Board@{Board}}
+\subsubsection[{\texorpdfstring{walk}{walk}}]{\setlength{\rightskip}{0pt plus 5cm}const int Board\+::walk\mbox{[}8\mbox{]}\mbox{[}2\mbox{]} = \{\{-\/1,0\}, \{-\/1,1\}, \{0,1\}, \{1,1\}, \{1,0\}, \{1,-\/1\}, \{0,-\/1\}, \{-\/1,-\/1\}\}\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classBoard_a362b986e66494ee079a6dd2b8b08075f}{}\label{classBoard_a362b986e66494ee079a6dd2b8b08075f}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{board_8h}{board.\+h}\item 
+\hyperlink{board_8cpp}{board.\+cpp}\end{DoxyCompactItemize}

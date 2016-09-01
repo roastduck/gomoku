@@ -1,0 +1,10 @@
+<map id="board.h" name="board.h">
+<area shape="rect" id="node2" href="$board_8cpp.html" title="board.cpp" alt="" coords="7,80,86,107"/>
+<area shape="rect" id="node3" href="$data_8h.html" title="data.h" alt="" coords="233,80,292,107"/>
+<area shape="rect" id="node6" href="$gomoku_8cpp.html" title="gomoku.cpp" alt="" coords="5,155,99,181"/>
+<area shape="rect" id="node4" href="$cross_8cpp.html" title="cross.cpp" alt="" coords="123,155,202,181"/>
+<area shape="rect" id="node5" href="$data_8cpp.html" title="data.cpp" alt="" coords="227,155,299,181"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title="main.cpp" alt="" coords="323,155,397,181"/>
+<area shape="rect" id="node8" href="$remoteinput_8cpp.html" title="remoteinput.cpp" alt="" coords="421,155,536,181"/>
+<area shape="rect" id="node9" href="$serverdialog_8cpp.html" title="serverdialog.cpp" alt="" coords="560,155,677,181"/>
+</map>

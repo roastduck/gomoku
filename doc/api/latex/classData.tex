@@ -1,0 +1,345 @@
+\hypertarget{classData}{}\section{Data Class Reference}
+\label{classData}\index{Data@{Data}}
+
+
+Manages all data.  
+
+
+
+
+{\ttfamily \#include $<$data.\+h$>$}
+
+
+
+Inheritance diagram for Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classData__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classData__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classData_acc4edfbc7e9cfdf810d01e404b0129de}{draw\+Input} (int row, int column)
+\begin{DoxyCompactList}\small\item\em input draw from user \end{DoxyCompactList}\item 
+void \hyperlink{classData_aa54baf049c35f1ac45db3b2c9c6b42bf}{send\+Restart} ()
+\begin{DoxyCompactList}\small\item\em tell remote to restart \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classData_a2ff062f4a7867e73c080f6f001cc074a}{draw\+Output} (int row, int column, bool color)
+\begin{DoxyCompactList}\small\item\em output draw to board \end{DoxyCompactList}\item 
+void \hyperlink{classData_a2331d231b898355973181c02c6a53042}{win} (bool color)
+\begin{DoxyCompactList}\small\item\em A color wins. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classData_abcae162153c8d0a55bb89919f5ccba03}{Data} (const \hyperlink{classData}{Data} \&)=delete
+\item 
+void \hyperlink{classData_aeb1e91a5f2ce9d978a28d1aed4ac46c2}{set\+Local\+Ready} ()
+\begin{DoxyCompactList}\small\item\em set as ready to play \end{DoxyCompactList}\item 
+void \hyperlink{classData_ab2b27bfac830989abd87c2cc2f188d53}{set\+Remote\+Ready} ()
+\item 
+void \hyperlink{classData_a8db5b20b0fe960b7f13819d59a5a1a09}{start\+Game} (bool color)
+\begin{DoxyCompactList}\small\item\em set local color and start game \end{DoxyCompactList}\item 
+void \hyperlink{classData_ae974ac11bbc2330fb43c9bb03f60f3cf}{reset} ()
+\begin{DoxyCompactList}\small\item\em clear board and reset color \end{DoxyCompactList}\item 
+bool \hyperlink{classData_a57c47976e11427223f0f18e99f19a09f}{get\+Local\+Color} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classData}{Data} $\ast$ \hyperlink{classData_ad35a80f2a296e08d9ff81444566570f5}{get\+Inst} ()
+\begin{DoxyCompactList}\small\item\em Get singleton instance. \end{DoxyCompactList}\item 
+static void \hyperlink{classData_a28e9f57b4cff7a6fe1058defc0ccac08}{del\+Inst} ()
+\begin{DoxyCompactList}\small\item\em Remove instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInput}{Input} $\ast$ \hyperlink{classData_a66242713cb93b680f847231ee57457bd}{local}
+\begin{DoxyCompactList}\small\item\em local player \end{DoxyCompactList}\item 
+\hyperlink{classRemoteInput}{Remote\+Input} $\ast$ \hyperlink{classData_ab1b9a7098b7d41fdab0366b2a9c660ed}{remote}
+\begin{DoxyCompactList}\small\item\em remote player \end{DoxyCompactList}\item 
+bool \hyperlink{classData_a2909d285f3adfe5a61c8ea181cd7824c}{show\+Dangerous}
+\item 
+\hyperlink{classBoard}{Board} \hyperlink{classData_aa932fae932d34b82666a9b56e1c36f8c}{board}
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classData_a85f3f284e7f73ab815b2dd2cd10d774f}{draw\+Output\+Black} (int row, int column)
+\item 
+void \hyperlink{classData_add002ff89ac45f63df4dfe2f873d5756}{draw\+Output\+White} (int row, int column)
+\item 
+void \hyperlink{classData_a5272d4ddc3263564cd13f47d609ab8b8}{win\+Private} (bool color)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classData_a1eaf44e85889a39a1263db2172162530}{Data} (Q\+Object $\ast$parent=0)
+\item 
+\hyperlink{classData_aab31956423290f0d62dcca47ab4d16dd}{$\sim$\+Data} ()
+\item 
+void \hyperlink{classData_ae73f56bd8100715a1c2fa0765f5bfd25}{decide\+Color} ()
+\begin{DoxyCompactList}\small\item\em decide color and tell remote side \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classData_aba43b573b14a94fa8798b76e92aa2db2}{local\+Ready}
+\item 
+bool \hyperlink{classData_a611e221f2d956e25eee03fc88d2bd453}{remote\+Ready}
+\item 
+bool \hyperlink{classData_a5530c3c349903bb4f6b3c95223de40ad}{local\+Color}
+\item 
+bool \hyperlink{classData_a78b5ab819236924f1699f83f0eafc0d2}{current\+Color}
+\item 
+bool \hyperlink{classData_adc0eab5a1c090fa044827e957c5d06f9}{connected}
+\begin{DoxyCompactList}\small\item\em connected signal draw to slot draw\+Output\+Black/\+White \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classData}{Data} $\ast$ \hyperlink{classData_ad373f0e9d46abaf2e67a6c40d4510d29}{instance} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages all data. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\subsubsection[{\texorpdfstring{Data(const Data \&)=delete}{Data(const Data &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Data\+::\+Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{classData_abcae162153c8d0a55bb89919f5ccba03}{}\label{classData_abcae162153c8d0a55bb89919f5ccba03}
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\subsubsection[{\texorpdfstring{Data(\+Q\+Object $\ast$parent=0)}{Data(QObject *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Data\+::\+Data (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [private]}}\hypertarget{classData_a1eaf44e85889a39a1263db2172162530}{}\label{classData_a1eaf44e85889a39a1263db2172162530}
+\index{Data@{Data}!````~Data@{$\sim$\+Data}}
+\index{````~Data@{$\sim$\+Data}!Data@{Data}}
+\subsubsection[{\texorpdfstring{$\sim$\+Data()}{~Data()}}]{\setlength{\rightskip}{0pt plus 5cm}Data\+::$\sim$\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_aab31956423290f0d62dcca47ab4d16dd}{}\label{classData_aab31956423290f0d62dcca47ab4d16dd}
+
+
+\subsection{Member Function Documentation}
+\index{Data@{Data}!decide\+Color@{decide\+Color}}
+\index{decide\+Color@{decide\+Color}!Data@{Data}}
+\subsubsection[{\texorpdfstring{decide\+Color()}{decideColor()}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::decide\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_ae73f56bd8100715a1c2fa0765f5bfd25}{}\label{classData_ae73f56bd8100715a1c2fa0765f5bfd25}
+
+
+decide color and tell remote side 
+
+\index{Data@{Data}!del\+Inst@{del\+Inst}}
+\index{del\+Inst@{del\+Inst}!Data@{Data}}
+\subsubsection[{\texorpdfstring{del\+Inst()}{delInst()}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::del\+Inst (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classData_a28e9f57b4cff7a6fe1058defc0ccac08}{}\label{classData_a28e9f57b4cff7a6fe1058defc0ccac08}
+
+
+Remove instance. 
+
+\index{Data@{Data}!draw\+Input@{draw\+Input}}
+\index{draw\+Input@{draw\+Input}!Data@{Data}}
+\subsubsection[{\texorpdfstring{draw\+Input}{drawInput}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::draw\+Input (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classData_acc4edfbc7e9cfdf810d01e404b0129de}{}\label{classData_acc4edfbc7e9cfdf810d01e404b0129de}
+
+
+input draw from user 
+
+\index{Data@{Data}!draw\+Output@{draw\+Output}}
+\index{draw\+Output@{draw\+Output}!Data@{Data}}
+\subsubsection[{\texorpdfstring{draw\+Output}{drawOutput}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::draw\+Output (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classData_a2ff062f4a7867e73c080f6f001cc074a}{}\label{classData_a2ff062f4a7867e73c080f6f001cc074a}
+
+
+output draw to board 
+
+\index{Data@{Data}!draw\+Output\+Black@{draw\+Output\+Black}}
+\index{draw\+Output\+Black@{draw\+Output\+Black}!Data@{Data}}
+\subsubsection[{\texorpdfstring{draw\+Output\+Black}{drawOutputBlack}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::draw\+Output\+Black (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classData_a85f3f284e7f73ab815b2dd2cd10d774f}{}\label{classData_a85f3f284e7f73ab815b2dd2cd10d774f}
+\index{Data@{Data}!draw\+Output\+White@{draw\+Output\+White}}
+\index{draw\+Output\+White@{draw\+Output\+White}!Data@{Data}}
+\subsubsection[{\texorpdfstring{draw\+Output\+White}{drawOutputWhite}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::draw\+Output\+White (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classData_add002ff89ac45f63df4dfe2f873d5756}{}\label{classData_add002ff89ac45f63df4dfe2f873d5756}
+\index{Data@{Data}!get\+Inst@{get\+Inst}}
+\index{get\+Inst@{get\+Inst}!Data@{Data}}
+\subsubsection[{\texorpdfstring{get\+Inst()}{getInst()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data} $\ast$ Data\+::get\+Inst (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classData_ad35a80f2a296e08d9ff81444566570f5}{}\label{classData_ad35a80f2a296e08d9ff81444566570f5}
+
+
+Get singleton instance. 
+
+\index{Data@{Data}!get\+Local\+Color@{get\+Local\+Color}}
+\index{get\+Local\+Color@{get\+Local\+Color}!Data@{Data}}
+\subsubsection[{\texorpdfstring{get\+Local\+Color()}{getLocalColor()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::get\+Local\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classData_a57c47976e11427223f0f18e99f19a09f}{}\label{classData_a57c47976e11427223f0f18e99f19a09f}
+\index{Data@{Data}!reset@{reset}}
+\index{reset@{reset}!Data@{Data}}
+\subsubsection[{\texorpdfstring{reset()}{reset()}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classData_ae974ac11bbc2330fb43c9bb03f60f3cf}{}\label{classData_ae974ac11bbc2330fb43c9bb03f60f3cf}
+
+
+clear board and reset color 
+
+\index{Data@{Data}!send\+Restart@{send\+Restart}}
+\index{send\+Restart@{send\+Restart}!Data@{Data}}
+\subsubsection[{\texorpdfstring{send\+Restart}{sendRestart}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::send\+Restart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classData_aa54baf049c35f1ac45db3b2c9c6b42bf}{}\label{classData_aa54baf049c35f1ac45db3b2c9c6b42bf}
+
+
+tell remote to restart 
+
+\index{Data@{Data}!set\+Local\+Ready@{set\+Local\+Ready}}
+\index{set\+Local\+Ready@{set\+Local\+Ready}!Data@{Data}}
+\subsubsection[{\texorpdfstring{set\+Local\+Ready()}{setLocalReady()}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::set\+Local\+Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classData_aeb1e91a5f2ce9d978a28d1aed4ac46c2}{}\label{classData_aeb1e91a5f2ce9d978a28d1aed4ac46c2}
+
+
+set as ready to play 
+
+\index{Data@{Data}!set\+Remote\+Ready@{set\+Remote\+Ready}}
+\index{set\+Remote\+Ready@{set\+Remote\+Ready}!Data@{Data}}
+\subsubsection[{\texorpdfstring{set\+Remote\+Ready()}{setRemoteReady()}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::set\+Remote\+Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classData_ab2b27bfac830989abd87c2cc2f188d53}{}\label{classData_ab2b27bfac830989abd87c2cc2f188d53}
+\index{Data@{Data}!start\+Game@{start\+Game}}
+\index{start\+Game@{start\+Game}!Data@{Data}}
+\subsubsection[{\texorpdfstring{start\+Game(bool color)}{startGame(bool color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::start\+Game (
+\begin{DoxyParamCaption}
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classData_a8db5b20b0fe960b7f13819d59a5a1a09}{}\label{classData_a8db5b20b0fe960b7f13819d59a5a1a09}
+
+
+set local color and start game 
+
+\index{Data@{Data}!win@{win}}
+\index{win@{win}!Data@{Data}}
+\subsubsection[{\texorpdfstring{win}{win}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::win (
+\begin{DoxyParamCaption}
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classData_a2331d231b898355973181c02c6a53042}{}\label{classData_a2331d231b898355973181c02c6a53042}
+
+
+A color wins. 
+
+\index{Data@{Data}!win\+Private@{win\+Private}}
+\index{win\+Private@{win\+Private}!Data@{Data}}
+\subsubsection[{\texorpdfstring{win\+Private}{winPrivate}}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+::win\+Private (
+\begin{DoxyParamCaption}
+\item[{bool}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{classData_a5272d4ddc3263564cd13f47d609ab8b8}{}\label{classData_a5272d4ddc3263564cd13f47d609ab8b8}
+
+
+\subsection{Member Data Documentation}
+\index{Data@{Data}!board@{board}}
+\index{board@{board}!Data@{Data}}
+\subsubsection[{\texorpdfstring{board}{board}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Board} Data\+::board}\hypertarget{classData_aa932fae932d34b82666a9b56e1c36f8c}{}\label{classData_aa932fae932d34b82666a9b56e1c36f8c}
+\index{Data@{Data}!connected@{connected}}
+\index{connected@{connected}!Data@{Data}}
+\subsubsection[{\texorpdfstring{connected}{connected}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::connected\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_adc0eab5a1c090fa044827e957c5d06f9}{}\label{classData_adc0eab5a1c090fa044827e957c5d06f9}
+
+
+connected signal draw to slot draw\+Output\+Black/\+White 
+
+\index{Data@{Data}!current\+Color@{current\+Color}}
+\index{current\+Color@{current\+Color}!Data@{Data}}
+\subsubsection[{\texorpdfstring{current\+Color}{currentColor}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::current\+Color\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_a78b5ab819236924f1699f83f0eafc0d2}{}\label{classData_a78b5ab819236924f1699f83f0eafc0d2}
+\index{Data@{Data}!instance@{instance}}
+\index{instance@{instance}!Data@{Data}}
+\subsubsection[{\texorpdfstring{instance}{instance}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data} $\ast$ Data\+::instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classData_ad373f0e9d46abaf2e67a6c40d4510d29}{}\label{classData_ad373f0e9d46abaf2e67a6c40d4510d29}
+\index{Data@{Data}!local@{local}}
+\index{local@{local}!Data@{Data}}
+\subsubsection[{\texorpdfstring{local}{local}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Input}$\ast$ Data\+::local}\hypertarget{classData_a66242713cb93b680f847231ee57457bd}{}\label{classData_a66242713cb93b680f847231ee57457bd}
+
+
+local player 
+
+\index{Data@{Data}!local\+Color@{local\+Color}}
+\index{local\+Color@{local\+Color}!Data@{Data}}
+\subsubsection[{\texorpdfstring{local\+Color}{localColor}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::local\+Color\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_a5530c3c349903bb4f6b3c95223de40ad}{}\label{classData_a5530c3c349903bb4f6b3c95223de40ad}
+\index{Data@{Data}!local\+Ready@{local\+Ready}}
+\index{local\+Ready@{local\+Ready}!Data@{Data}}
+\subsubsection[{\texorpdfstring{local\+Ready}{localReady}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::local\+Ready\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_aba43b573b14a94fa8798b76e92aa2db2}{}\label{classData_aba43b573b14a94fa8798b76e92aa2db2}
+\index{Data@{Data}!remote@{remote}}
+\index{remote@{remote}!Data@{Data}}
+\subsubsection[{\texorpdfstring{remote}{remote}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Remote\+Input}$\ast$ Data\+::remote}\hypertarget{classData_ab1b9a7098b7d41fdab0366b2a9c660ed}{}\label{classData_ab1b9a7098b7d41fdab0366b2a9c660ed}
+
+
+remote player 
+
+\index{Data@{Data}!remote\+Ready@{remote\+Ready}}
+\index{remote\+Ready@{remote\+Ready}!Data@{Data}}
+\subsubsection[{\texorpdfstring{remote\+Ready}{remoteReady}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::remote\+Ready\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classData_a611e221f2d956e25eee03fc88d2bd453}{}\label{classData_a611e221f2d956e25eee03fc88d2bd453}
+\index{Data@{Data}!show\+Dangerous@{show\+Dangerous}}
+\index{show\+Dangerous@{show\+Dangerous}!Data@{Data}}
+\subsubsection[{\texorpdfstring{show\+Dangerous}{showDangerous}}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::show\+Dangerous}\hypertarget{classData_a2909d285f3adfe5a61c8ea181cd7824c}{}\label{classData_a2909d285f3adfe5a61c8ea181cd7824c}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{data_8h}{data.\+h}\item 
+\hyperlink{data_8cpp}{data.\+cpp}\end{DoxyCompactItemize}
